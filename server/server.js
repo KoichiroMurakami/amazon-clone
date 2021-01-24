@@ -28,8 +28,11 @@ app.use(morgan('dev'));
 
 // routing
 const productRoutes = require('./routes/product');
-
+const categoryRoutes = require('./routes/category');
+const ownerRoutes = require('./routes/owner');
 app.use('/api', productRoutes);
+app.use('/api', categoryRoutes);
+app.use('/api', ownerRoutes);
 
 // server response
 app.listen(3000, (err) => {
