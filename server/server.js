@@ -12,7 +12,7 @@ const app = express();
 mongoose.connect(
   process.env.DATABASE,
   { useUnifiedTopology: true, useNewUrlParser: true },
-  (err) => {
+  err => {
     if (err) {
       console.log(err);
     } else {
@@ -35,10 +35,12 @@ app.use('/api', categoryRoutes);
 app.use('/api', ownerRoutes);
 
 // server response
-app.listen(3000, (err) => {
+app.listen(3000, err => {
   if (err) {
     console.log(err);
   } else {
     console.log('listening on PORT', 3000);
   }
 });
+
+module.exports = app;

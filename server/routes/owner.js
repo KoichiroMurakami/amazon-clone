@@ -27,4 +27,19 @@ router.post('/owners', upload.single('photo'), async (req, res) => {
   }
 });
 
+router.get('/owners', async (req, res) => {
+  try {
+    let owners = await Owner.find();
+    res.json({
+      success: true,
+      owners: owners
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message
+    });
+  }
+});
+
 module.exports = router;
