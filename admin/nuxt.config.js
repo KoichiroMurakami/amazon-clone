@@ -9,8 +9,14 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', type: 'css', href: '/css/all.css' },
-      { rel: 'stylesheet', type: 'css', href: '/css/default.css' }
+      {
+        rel: 'stylesheet',
+        href: '/css/font-awesome/all.css'
+      },
+      {
+        rel: 'stylesheet',
+        href: '/css/font-awesome/default.css'
+      }
     ]
   },
 
