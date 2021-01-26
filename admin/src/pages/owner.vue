@@ -77,7 +77,6 @@ export default {
   methods: {
     onFileSelected (event) {
       this.selectedFile = event.target.files[0]
-      console.log(this.selectedFile)
       this.fileName = event.target.files[0].name
     },
     async onAddOwner () {
@@ -89,7 +88,7 @@ export default {
         'http://localhost:3000/api/owners',
         data
       )
-      console.log(data)
+
       this.owners.push({ name: this.name })
     }
   }
