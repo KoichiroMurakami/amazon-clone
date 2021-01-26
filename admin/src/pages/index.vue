@@ -11,7 +11,7 @@
           <!-- Buttons -->
           <a
             class="a-button-buy-again"
-            @click="$router.push('/product')"
+            @click="$router.push('/products')"
           >Add a new product</a>
           <a
             class="a-button-history margin-right-10"
