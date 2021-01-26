@@ -33,7 +33,7 @@
           <div class="history-box">
             <!-- Product image -->
             <a href="#" class="a-link-normal">
-              <img :src="product.photo" class="img-fluid img">
+              <img :src="product.photo" class="img-fluid img" style="width: 300px; height: 400px">
             </a>
             <div class="a-spacing-top-base asin-title">
               <span class="a-text-normal">
