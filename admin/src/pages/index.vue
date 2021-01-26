@@ -60,7 +60,7 @@
             </div>
             <!-- Product buttons -->
             <div class="a-row">
-              <a href="#" class="a-button-history margin-right-10">Update</a>
+              <a class="a-button-history margin-right-10" @click="$router.push(`/products/${product._id}`)">Update</a>
               <a href="#" class="a-button-history margin-right-10">Delete</a>
             </div>
           </div>
