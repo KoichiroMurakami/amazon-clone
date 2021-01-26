@@ -26,7 +26,7 @@
     <div class="a-spacing-large" />
     <div class="container-fluid browsing-history">
       <div class="row">
-        <div v-for="(product, index) in products" :key="product._id" class="col-xl-2 col-lg-2 col-md-3 col-sm-6 col-6 br bb">
+        <div v-for="(product) in products" :key="product._id" class="col-xl-2 col-lg-2 col-md-3 col-sm-6 col-6 br bb">
           <div class="history-box">
             <!-- Product image -->
             <a href="#" class="a-link-normal">
@@ -73,7 +73,6 @@ export default {
   async asyncData ({ $axios }) {
     try {
       const response = await $axios.$get('http://localhost:3000/api/products')
-      console.log(response)
       return {
         products: response.products
       }
