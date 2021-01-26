@@ -1,5 +1,8 @@
 node_modules/
 
+.vscode/
+
+
 .env
 
 # Created by .ignore support plugin (hsz.mobi)
