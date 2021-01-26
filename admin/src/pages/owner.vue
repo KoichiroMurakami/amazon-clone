@@ -42,7 +42,7 @@
             </div>
           </form>
           <br>
-          <ul class="list-group-item">
+          <ul class="list-group-item" style="margin-left: 0px;">
             <li v-for="owner in owners" :key="owner._id">
               {{ owner.name }}
             </li>

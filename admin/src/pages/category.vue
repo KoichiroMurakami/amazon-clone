@@ -36,7 +36,7 @@
             </div>
           </form>
           <br>
-          <ul class="list-group-item">
+          <ul class="list-group-item" style="margin-left: 0px;">
             <li v-for="category in categories" :key="category._id">
               {{ category.type }}
             </li>
