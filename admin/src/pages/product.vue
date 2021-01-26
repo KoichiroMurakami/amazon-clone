@@ -71,12 +71,19 @@
                   </label>
                 </div>
               </div>
-              <!-- Register Button -->
+              <!-- Buttons -->
               <hr>
               <div class="a-spacing-top-medium">
+                <!-- register button -->
                 <span class="a-button-register">
                   <span class="a-button-inner">
                     <span class="a-button-text" @click="onAddProduct">Add Product</span>
+                  </span>
+                </span>
+                <!-- back to the top button -->
+                <span class="a-button-register">
+                  <span class="a-button-inner">
+                    <span class="a-button-text" @click="$router.back()">Back</span>
                   </span>
                 </span>
               </div>
