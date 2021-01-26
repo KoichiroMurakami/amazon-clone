@@ -9,14 +9,17 @@
           </h1>
           <div class="a-spacing-large" />
           <!-- Buttons -->
-          <a href="#" class="a-button-buy-again">Add a new product</a>
           <a
-            href="#"
+            class="a-button-buy-again"
+            @click="$router.push('/product')"
+          >Add a new product</a>
+          <a
             class="a-button-history margin-right-10"
+            @click="$router.push('/category')"
           >Add a new category</a>
           <a
-            href="#"
             class="a-button-history margin-right-10"
+            @click="$router.push('/owner')"
           >Add a new owner</a>
         </div>
       </div>
