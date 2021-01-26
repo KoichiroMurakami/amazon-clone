@@ -139,9 +139,7 @@ export default {
       data.append('categoryID', this.categoryID)
       data.append('photo', this.selectedFile, this.selectedFile.name)
 
-      const result = await this.$axios.$post('http://localhost:3000/api/products', data)
-      console.log(result)
-
+      await this.$axios.$post('http://localhost:3000/api/products', data)
       // redirct user to the top page
       this.$router.push('/')
     }
