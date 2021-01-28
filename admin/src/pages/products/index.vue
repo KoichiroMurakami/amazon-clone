@@ -53,7 +53,7 @@
               </div>
               <!-- Description textarea -->
               <div class="a-spacing-top-medium">
-                <label style="margin-bottom: 0px">Price</label>
+                <label style="margin-bottom: 0px">Description</label>
                 <textarea
                   v-model="description"
                   placeholder="Provide details such as a product description."
