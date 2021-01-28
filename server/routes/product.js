@@ -20,6 +20,8 @@ router.post('/products', upload.single('photo'), async (req, res) => {
     product.price = req.body.price;
     product.stockQuantity = req.body.stockQuantity;
     product.rating = req.body.rating;
+    product.owner = req.body.ownerID
+    product.category = req.body.categoryID
 
     await product.save();
 
@@ -38,7 +40,9 @@ router.post('/products', upload.single('photo'), async (req, res) => {
 // get all products
 router.get('/products', async (req, res) => {
   try {
-    let products = await Product.find();
+    let products = await Product.find()
+      .populate('owner category')
+      .exec();
     res.json({
       success: true,
       products: products
