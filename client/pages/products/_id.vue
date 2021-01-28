@@ -69,7 +69,7 @@
               </div>
             </div>
           </div>
-          <!-- description -->
+          <!-- middle 6 grid descriptions -->
           <div class="col-lg-6 col-md-6 col-sm-8">
             <div class="centerCol">
               <!-- product title -->
@@ -88,6 +88,7 @@
               </div>
               <div class="reviewGroup" />
               <hr style="margin-top: 10px;">
+              <!--  a tags dummy data -->
               <div class="mediaMatrix">
                 <div class="formats">
                   <a href="#" class="link-expander">
@@ -169,6 +170,136 @@
                   </ul>
                 </div>
               </div>
+              <!-- description -->
+              <div class="bookDescription">
+                <div class="bookDescriptionInner">
+                  This book is awesome
+                </div>
+                <!-- product specification -->
+                <div class="aboutEbooksFeature">
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <div class="a-declarative">
+                        Length:<span><a href="#">386 pages<i class="a-icon a-icon-popover" /></a></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- last 3 grid buying section-->
+          <div class="col-lg-3 col-md-3 col-sm-6">
+            <div class="combinedBuyBox">
+              <div class="buyBox">
+                <div class="a-section">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <form>
+                        <input id="test-1" type="radio">
+                        <label for="test1">Buy Now</label>
+                      </form>
+                    </div>
+                    <!-- product price -->
+                    <div class="float-right">
+                      <div class="a-size-medium a-color-price offer-price a-text-normal">
+                        $39
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="a-section a-spacing-none">
+                  <div class="row">
+                    <div class="col-sm-5 col-5">
+                      <select>
+                        <option value="1">
+                          Qty: &nbsp; 1
+                        </option>
+                        <option value="2">
+                          Qty: &nbsp; 2
+                        </option>
+                        <option value="3">
+                          Qty: &nbsp; 3
+                        </option>
+                        <option value="4">
+                          Qty: &nbsp; 4
+                        </option>
+                        <option value="5">
+                          Qty: &nbsp; 5
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="a-section a-spacing-top-small">
+                  <div class="a-section a-spacing-none">
+                    <span class="a-size-medium a-color-success">In Stock</span>
+                  </div>
+                  <div class="a-section a-spacing-mini">
+                    Ships from and sold by Amazon.com
+                  </div>
+                </div>
+                <div class="a-section">
+                  <div class="a-button-stack">
+                    <span class="a-spacing-small a-button-primary a-button-icon">
+                      <span class="a-button-inner">
+                        <i class="a-icon a-icon-cart" />
+                        <input type="submit" class="a-button-input" name="submit.add-to-cart">
+                        <span class="a-button-text">Add to Cart</span>
+                      </span>
+                    </span>
+                  </div>
+                  <div class="a-button-stack">
+                    <span class="a-spacing-small a-button-primary a-button-icon">
+                      <span class="a-button-inner">
+                        <i class="a-icon a-icon-buynow" />
+                        <input type="submit" class="a-button-input" name="submit.add-to-cart">
+                        <span class="a-button-text">Buy Now</span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+                <div class="a-row">
+                  <div class="a-spacing-top-small">
+                    <div class="a-section a-spacing-none">
+                      <div class="a-section a-spacing-none a-spacing-top-mini">
+                        This item shps to
+                        <b>California</b>
+                        <b>Get it by Monday, Sept 23, - Monday, Sept 30</b>
+                        Choose this date at checkout
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <span class="a-declarative">
+                  <a href="#" class="a-link-normal">
+                    <div class="a-row a-spacing-mini">
+                      <i class="fal fa-map-market-alt" />
+                      <span class="a-size-small">Deliver to California</span>
+                    </div>
+                  </a>
+                </span>
+                <br>
+                <hr>
+                <div class="a-section">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <form>
+                        <input id="test2" type="radio" name="radio-group">
+                        <label for="test1">Buy Now</label>
+                      </form>
+                    </div>
+                    <div class="float-right">
+                      <span class="a-color-base offer-price a-text-normal">$39</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="kcpAppBaseBox text-center">
+              <img src="/img/readyondevice.png" alt="img" class="img-fluid">
             </div>
           </div>
         </div>
