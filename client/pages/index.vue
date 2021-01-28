@@ -56,15 +56,15 @@
                             <!-- price -->
                             <div class="a-row a-spacing-none">
                               <a href="#" class="a-link-normal a-text-normal">
-                                <span class="a-offscreen">${{ product.price }}/span>
-                                  <span class="a-color-base sx-zero-spacing">
-                                    <span class="sx-price sx-price-large">
-                                      <sup class="sx-price-currency">$</sup>
-                                      <span class="sx-price-whole">{{ product.price }}</span>
-                                      <sup class="sx-price-fractional">00</sup>
-                                    </span>
+                                <span class="a-offscreen">${{ product.price }}</span>
+                                <span class="a-color-base sx-zero-spacing">
+                                  <span class="sx-price sx-price-large">
+                                    <sup class="sx-price-currency">$</sup>
+                                    <span class="sx-price-whole">{{ product.price }}</span>
+                                    <sup class="sx-price-fractional">00</sup>
                                   </span>
-                                </span></a>
+                                </span>
+                              </a>
                               <span class="a-letter-space" />
                               <span class="ap-size-base-plus a-coor-secondary a-text-strike">$28.00</span>
                             </div>
