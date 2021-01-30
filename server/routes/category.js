@@ -15,7 +15,7 @@ router.post('/categories', async (req, res) => {
       message: 'successfully saved'
     });
   } catch (err) {
-    res.status(200).json({
+    res.status(500).json({
       success: false,
       message: err.message
     });
