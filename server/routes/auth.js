@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
+const verifyToken = require('../middlewares/verifyToken')
 
 // sign up
 router.post('/auth/signup', async (req, res) => {
@@ -30,4 +31,23 @@ router.post('/auth/signup', async (req, res) => {
     }
   }
 })
+
+// profile routes
+router.get('/auth/user', verifyToken, async (req, res) => {
+  try {
+    let foundUser = await User.findOne({ _id: req.decoded._id }) 
+    if (foundUser) {
+      res.json({
+        success: true,
+        user: foundUser
+      })
+    } 
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message
+    })
+  }
+})
+
 module.exports = router
