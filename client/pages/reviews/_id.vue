@@ -30,6 +30,9 @@
               </h2>
               <div class="a-row">
                 <!-- Rating -->
+                <no-ssr>
+                  <StarRating v-model="rating" />
+                </no-ssr>
               </div>
               <div class="a-row a-spacing-top-large">
                 <h2>Add photo or video</h2>
@@ -43,7 +46,7 @@
                 <!-- Choose a Photo -->
                 <label class="choosefile-button">
                   <i class="fal fa-plus" />
-                  <input type="file">
+                  <input type="file" @change="onFileSelected">
                 </label>
               </div>
               <div class="a-spacing-top-large" />
@@ -54,6 +57,7 @@
                   Add a headline
                 </h2>
                 <input
+                  v-model="headline"
                   type="text"
                   class="a-input-text"
                   style="width: 70%;"
@@ -66,6 +70,7 @@
                   Write your review
                 </h2>
                 <textarea
+                  v-model="body"
                   placeholder="What do you like or dislike? What did you see this product for?"
                   style="height:6em; width: 100%;"
                 />
@@ -111,15 +116,35 @@
   <!--/MAIN-->
 </template>
 <script>
+import StarRating from 'vue-star-rating'
 export default {
+  components: {
+    StarRating
+  },
   async asyncData ({ $axios, params }) {
     try {
       const response = await $axios.$get(`/api/producs/${params.id}`)
+
       return {
         product: response.product
       }
     } catch (err) {
       console.log(err)
+    }
+  },
+  data () {
+    return {
+      rating: 0,
+      body: '',
+      headline: '',
+      selectedFile: null,
+      fileName: null
+    }
+  },
+  methods: {
+    onFileSelected () {
+      this.selectedFile = event.target.files[0]
+      this.fileName = event.target.files[0].name
     }
   }
 }
