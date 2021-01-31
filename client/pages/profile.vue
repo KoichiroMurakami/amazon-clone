@@ -55,6 +55,12 @@
                   <span class="a-button-text" @click="$router.back()">Back</span>
                 </span>
               </span>
+              <!-- logout button -->
+              <span class="a-button-register">
+                <span class="a-button-inner">
+                  <span class="a-button-text" @click="onLogout">Log Out</span>
+                </span>
+              </span>
             </div>
           </form>
           <br>
@@ -94,6 +100,10 @@ export default {
       } catch (err) {
         console.log(err)
       }
+    },
+    async onLogout () {
+      await this.$auth.logout()
+      this.$router.push('/')
     }
   }
 }

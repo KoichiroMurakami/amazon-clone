@@ -81,11 +81,11 @@
               <template v-else>
                 <nuxt-link
                   id="nav-link-accountList"
-                  to="/login"
+                  to="/signup"
                   tabindex="0"
                   class="nav-a nav-a-2"
                 >
-                  <span class="nav-line-1">Hello, Sign in</span>
+                  <span class="nav-line-1">Hello, Sign Up</span>
                   <span class="nav-line-2">
                     Account &amp; Lists
                     <span class="nav-icon nav-arrow" style="visibility: visible" />
