@@ -67,18 +67,31 @@
                 </span>
               </a>
               <span class="icp-nav-link-border" />
-              <nuxt-link
-                id="nav-link-accountList"
-                to="/register"
-                tabindex="0"
-                class="nav-a nav-a-2"
-              >
-                <span class="nav-line-1">Hello, Sign in</span>
-                <span class="nav-line-2">
-                  Account &amp; Lists
-                  <span class="nav-icon nav-arrow" style="visibility: visible" />
-                </span>
-              </nuxt-link>
+              <template v-if="$auth.$state.loggedIn">
+                <nuxt-link
+                  id="nav-link-accountList"
+                  to="/register"
+                  tabindex="0"
+                  class="nav-a nav-a-2"
+                >
+                  <span class="nav-line-1">Hello,</span>
+                  <span class="nav-line-2">{{ $auth.$state.user.name }}</span>
+                </nuxt-link>
+              </template>
+              <template v-else>
+                <nuxt-link
+                  id="nav-link-accountList"
+                  to="/register"
+                  tabindex="0"
+                  class="nav-a nav-a-2"
+                >
+                  <span class="nav-line-1">Hello, Sign in</span>
+                  <span class="nav-line-2">
+                    Account &amp; Lists
+                    <span class="nav-icon nav-arrow" style="visibility: visible" />
+                  </span>
+                </nuxt-link>
+              </template>
               <nuxt-link to="/orders" class="nav-a nav-a-2 nav-single-row-link">
                 <span class="nav-line-1" />
                 <span class="nav-line-2">Orders</span>
@@ -89,6 +102,13 @@
                 <span class="nav-sprite nav-cart-icon" />
                 <span id="nav-cart-count" class="nav-cart-count nav-cart-0" aria-hidden="true">0</span>
               </nuxt-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+</template>
             </div>
           </div>
         </div>
