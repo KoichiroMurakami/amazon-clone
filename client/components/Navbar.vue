@@ -70,7 +70,7 @@
               <template v-if="$auth.$state.loggedIn">
                 <nuxt-link
                   id="nav-link-accountList"
-                  to="/register"
+                  to="/"
                   tabindex="0"
                   class="nav-a nav-a-2"
                 >
@@ -81,7 +81,7 @@
               <template v-else>
                 <nuxt-link
                   id="nav-link-accountList"
-                  to="/register"
+                  to="/login"
                   tabindex="0"
                   class="nav-a nav-a-2"
                 >
