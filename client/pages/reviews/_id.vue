@@ -31,7 +31,7 @@
               <div class="a-row">
                 <!-- Rating -->
                 <no-ssr>
-                  <StarRating v-model="rating" />
+                  <star-rating v-model="rating" />
                 </no-ssr>
               </div>
               <div class="a-row a-spacing-top-large">
@@ -123,7 +123,7 @@ export default {
   },
   async asyncData ({ $axios, params }) {
     try {
-      const response = await $axios.$get(`/api/producs/${params.id}`)
+      const response = await $axios.$get(`/api/products/${params.id}`)
 
       return {
         product: response.product
@@ -142,7 +142,7 @@ export default {
     }
   },
   methods: {
-    onFileSelected () {
+    onFileSelected (event) {
       this.selectedFile = event.target.files[0]
       this.fileName = event.target.files[0].name
     }
