@@ -13,7 +13,7 @@ router.getpost('/reviews/:productID',
     review.body = req.body.body
     review.rating = req.body.rating
     review.photo = req.file.location
-    review.userr = req.decoded._id
+    review.user = req.decoded._id
     review.productID = req.params.productID
 
     await Product.updateOne({ $push: review._id})
