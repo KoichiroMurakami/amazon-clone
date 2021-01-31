@@ -4,7 +4,7 @@ const Product = require('../models/product')
 const uploadPhoto = require('../middlewares/uploadPhoto')
 const verifyToken = require('../middlewares/verifyToken')
 
-router.getpost('/reviews/:productID',
+router.post('/reviews/:productID',
   [verifyToken, uploadPhoto.single('photo')],
   async (req, res) => {
   try {
