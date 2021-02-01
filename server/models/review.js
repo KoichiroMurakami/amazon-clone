@@ -9,3 +9,5 @@ const ReviewSchema = new Schema({
   productID: {type: Schema.Types.ObjectId, ref: 'Product'},
   user: {type: Schema.Types.ObjectId, ref: 'User'}
 })
+
+module.exports = mongoose.model('Review', ReviewSchema);

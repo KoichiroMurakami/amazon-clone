@@ -47,6 +47,7 @@
                 <label class="choosefile-button">
                   <i class="fal fa-plus" />
                   <input type="file" @change="onFileSelected">
+                  <p style="margin-top: -70px; width: 100%; text-align: left">{{ fileName }}</p>
                 </label>
               </div>
               <div class="a-spacing-top-large" />
@@ -90,7 +91,7 @@
                   <img src="/img/avatar.png" class="img-fluid" style="width: 50px;">
                 </div>
                 <div class="media-body pl-3 pt-2">
-                  <input type="text" class="a-input-text" style="width: 100%;">
+                  <input type="text" class="a-input-text" style="width: 100%;" :value="$auth.$state.user.name">
                 </div>
               </div>
             </div>
@@ -100,7 +101,7 @@
             <div class="a-row text-right a-spacing-top-large">
               <span class="a-button-register">
                 <span class="a-button-inner">
-                  <span class="a-button-text">Submit</span>
+                  <span class="a-button-text" @click="onAddReview">Submit</span>
                 </span>
               </span>
             </div>
@@ -145,6 +146,23 @@ export default {
     onFileSelected (event) {
       this.selectedFile = event.target.files[0]
       this.fileName = event.target.files[0].name
+    },
+    async onAddReview () {
+      try {
+        const data = new FormData()
+        data.append('headline', this.headline)
+        data.append('body', this.body)
+        data.append('rating', this.rating)
+        data.append('photo', this.selectedFile, this.selectedFile.name)
+
+        const response = await this.$axios.$post(`/api/reviews/${this.$route.params.id}`, data)
+
+        if (response.success) {
+          this.$router.push(`/products/${this.$route.params.id}`)
+        }
+      } catch (err) {
+        console.log(err)
+      }
     }
   }
 }

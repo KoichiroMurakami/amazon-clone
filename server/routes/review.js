@@ -33,7 +33,7 @@ router.post('/reviews/:productID', [verifyToken, uploadPhoto.single('photo')], a
 
 router.get('/reviews/:productID', async (req, res) => {
   try {
-    const productReviews = await Review.findOne({
+    const productReviews = await Review.find({
       productID: req.params.productID
     }).populate('user').exec();
 
