@@ -41,7 +41,8 @@ router.post('/products', upload.single('photo'), async (req, res) => {
 router.get('/products', async (req, res) => {
   try {
     let products = await Product.find()
-      .populate('owner category reviews')
+      .populate('owner category')
+      .populate('reviews', 'rating')
       .exec();
     res.json({
       success: true,
@@ -59,7 +60,8 @@ router.get('/products', async (req, res) => {
 router.get('/products/:id', async (req, res) => {
   try {
     let product = await Product.findOne({ _id: req.params.id })
-      .populate('owner category reviews')
+      .populate('owner category')
+      .populate('reviews', 'rating')
       .exec();
     res.json({
       success: true,

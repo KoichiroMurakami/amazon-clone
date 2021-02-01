@@ -29,13 +29,14 @@
                       <div class="col-sm-9">
                         <div class="a-row a-spacing-small">
                           <!-- title and date -->
-                          <a href="#" class="a-link-normal">
-                            <h2 class="a-size-medium">{{ product.title }}
+                          <nuxt-link :to="`/products/${product._id}`" class="a-link-normal">
+                            <h2 class="a-size-medium">
+                              {{ product.title }}
                               <span class="a-letter-space" />
                               <span class="a-letter-space" />
                               <span class="a-size-small a-color-secondary">Sep 3, 2019</span>
                             </h2>
-                          </a>
+                          </nuxt-link>
                         </div>
                         <!-- authors name -->
                         <div class="a-row a-spacing-small">
@@ -83,6 +84,18 @@
                           <div class="col-sm-5">
                             <div class="a-row a-spacing-mini">
                               <!-- star ratings -->
+                              <no-ssr>
+                                <star-rating
+                                  :rating="product.averageRating"
+                                  :show-rating="false"
+                                  :glow="1"
+                                  :border-width="1"
+                                  :rounded-corners="true"
+                                  :read-only="true"
+                                  :star-size="18"
+                                  :star-points="[23, 3, 2, 23, 54, 34, 43]"
+                                />
+                              </no-ssr>
                             </div>
                           </div>
                         </div>
@@ -99,9 +112,11 @@
   </main>
 </template>
 <script>
+import StarRating from 'vue-star-rating'
 import featuredProduct from '../components/FeaturedProduct'
 export default {
   components: {
+    StarRating,
     featuredProduct
   },
   async asyncData ({ $axios }) {
