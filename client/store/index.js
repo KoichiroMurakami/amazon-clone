@@ -1,7 +1,10 @@
 export const state = () => ({
   // state
   cart: [],
-  cartLength: 0
+  cartLength: 0,
+  price: 0,
+  estimatedDelivery: ''
+
 })
 
 export const actions = {
@@ -60,6 +63,11 @@ export const mutations = {
     state.cartLength -= product.quantity
     const indexOfProduct = state.cart.indexOf(product)
     state.cart.splice(indexOfProduct, 1)
+  },
+
+  setShipping (state, { price, estimatedDelivery }) {
+    state.shippingPrice = price
+    state.shippingEstimatedDelivery = estimatedDelivery
   }
 
 }
@@ -78,5 +86,22 @@ export const getters = {
       total += product.price * product.quantity
     })
     return total
+  },
+  getCartTotalPriceWithShipping (state) {
+    let total = 0
+    // eslint-disable-next-line array-callback-return
+    state.cart.map((product) => {
+      total += product.price * product.quantity
+    })
+    return total + state.shippingPrice
+  },
+  getEstimatedDelivery (state) {
+    return state.shippingEstimatedDelivery
+  },
+  clearCart (state) {
+    state.cart = []
+    state.cartLength = 0
+    state.price = 0
+    state.estimatedDelivery = ''
   }
 }

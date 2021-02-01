@@ -3,7 +3,8 @@ const URL = 'http://localhost:3000'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'client',
+    title: process.env.npm_package_name || '',
+    script: [{ src: 'https://js.stripe.com/v3' }],
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
