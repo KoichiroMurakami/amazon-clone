@@ -93,7 +93,6 @@
                                   :rounded-corners="true"
                                   :read-only="true"
                                   :star-size="18"
-                                  :star-points="[23, 3, 2, 23, 54, 34, 43]"
                                 />
                               </no-ssr>
                             </div>
