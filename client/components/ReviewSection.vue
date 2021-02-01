@@ -6,7 +6,7 @@
         <div class="col-lg-4 col-md-5 col-sm-12">
           <!-- Total Customer reviews -->
           <a href="#" class="a-color-base">
-            <h2>1,354 customer reviews</h2>
+            <h2>{{ product.rating.length }} customer reviews</h2>
           </a>
           <div class="cr-widget-ACR">
             <i class="fas fa-star" />
