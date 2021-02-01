@@ -16,7 +16,7 @@
             <i class="fas fa-star-half-alt" />
             <span>
               <a href="#">
-                4.5 out of 5 stars
+                {{ product.averageRating }} out of 5 stars
                 <i class="a-icon a-icon-popover" />
               </a>
             </span>
@@ -260,7 +260,7 @@
             <div class="card-padding">
               <div class="review-header">
                 <h3>
-                  <span class="a-size-base">Showing 1-8 of {{ product.reviews.length }} reviews</span>
+                  <span class="a-size-base">Showing {{ product.reviews.length }} reviews</span>
                 </h3>
               </div>
               <div class="review-sort-type">
