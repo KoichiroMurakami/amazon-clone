@@ -127,7 +127,6 @@ export default {
       title: '',
       price: '',
       stockQuantity: '',
-      rating: '',
       description: '',
       selectedFile: null,
       fileName: ''

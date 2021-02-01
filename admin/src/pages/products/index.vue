@@ -123,7 +123,6 @@ export default {
       title: '',
       price: 0,
       stockQuantity: 0,
-      rating: 0,
       description: '',
       selectedFile: null,
       fileName: ''

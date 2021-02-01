@@ -153,7 +153,10 @@
             <!-- Link to another Review page -->
             <span class="a-button-base writeReviewButton cm-cr-button-wide">
               <span class="a-button-inner">
-                <a href="#" class="a-button-text">Write a customer review</a>
+                <nuxt-link
+                  :to="`/reviews/${product._id}`"
+                  class="a-button-text"
+                >Write a customer review</nuxt-link>
               </span>
             </span>
           </div>
@@ -168,7 +171,13 @@
             <h3>Customer images</h3>
             <!-- Review Images -->
             <div class="a-spacing-small a-spacing-top-small">
-              <img class="img-fluid" width="22.5%">
+              <img
+                v-for="review in reviews"
+                :key="review._id"
+                :src="review.photo"
+                class="img-fluid"
+                width="22.5%"
+              >
             </div>
             <div>
               <a href="#">See all customer images</a>
@@ -251,7 +260,7 @@
             <div class="card-padding">
               <div class="review-header">
                 <h3>
-                  <span class="a-size-base">Showing 1-8 of 1,354 reviews</span>
+                  <span class="a-size-base">Showing 1-8 of 9 reviews</span>
                 </h3>
               </div>
               <div class="review-sort-type">
@@ -325,7 +334,11 @@
             <div class="a-row">
               <span id="a-autoid-15" class="a-button a-button-base writeReviewButton">
                 <span class="a-button-inner">
-                  <a href="#" class="a-button-text" role="button">Write a customer review</a>
+                  <nuxt-link
+                    :to="`/reviews/${product._id}`"
+                    class="a-button-text"
+                    role="button"
+                  >Write a customer review</nuxt-link>
                 </span>
               </span>
             </div>

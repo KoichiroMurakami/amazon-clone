@@ -14,7 +14,7 @@ router.post('/reviews/:productID', [verifyToken, uploadPhoto.single('photo')], a
     review.user = req.decoded._id;
     review.productID = req.params.productID;
 
-    await Product.updateOne({ $push: review._id});
+    await Product.findOneAndUpdate({ _id: review.productID }, { $push: { rating: review._id } });
     const savedReview = await review.save();
 
     if (savedReview) {
