@@ -49,7 +49,7 @@ export const mutations = {
     if (state.cart.length > 0) {
       // eslint-disable-next-line array-callback-return
       state.cart.map((product) => {
-        state.artLength += product.quantity
+        state.cartLength += product.quantity
       })
     }
 

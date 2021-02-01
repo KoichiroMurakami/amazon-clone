@@ -200,7 +200,7 @@
 import { mapGetters } from 'vuex'
 export default {
   computed: {
-    ...mapGetters(['getCart', 'getCartTotalPrice', 'getCartLength', 'removeProduct'])
+    ...mapGetters(['getCart', 'getCartTotalPrice', 'getCartLength'])
   },
   methods: {
     onChangeQuantity (event, product) {
