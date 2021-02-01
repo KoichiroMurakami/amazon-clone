@@ -34,11 +34,13 @@ const categoryRoutes = require('./routes/category');
 const ownerRoutes = require('./routes/owner');
 const authRoutes = require('./routes/auth')
 const reviewRoutes = require('./routes/review')
+const addressRoutes = require('./routes/address')
 app.use('/api', productRoutes);
 app.use('/api', categoryRoutes);
 app.use('/api', ownerRoutes);
 app.use('/api', authRoutes);
 app.use('/api', reviewRoutes);
+app.use('/api', addressRoutes);
 
 // server response
 app.listen(3000, err => {
