@@ -30,13 +30,13 @@
               </h1>
               <!-- Message from Server -->
               <div class="a-section a-spacing-none a-spacing-top-small">
-                <b>Message from Server</b>
+                <b>{{ message }}</b>
               </div>
               <div class="a-spacing-double-large">
                 <div class="row a-spacing-micro">
                   <div class="col-lg-4 col-md-5 col-sm-12 pb-2">
                     <nuxt-link
-                      to="/address/add"
+                      to="/addresses/add"
                       class="a-link-normal add-new-address-button"
                       style="text-decoration:none;"
                     >
@@ -51,7 +51,7 @@
                     </nuxt-link>
                   </div>
                   <!-- Address -->
-                  <div class="col-lg-4 col-md-4 col-sm-12 pl-md-0 pb-2">
+                  <div v-for="(address, index) in addresses" :key="address._id" class="col-lg-4 col-md-4 col-sm-12 pl-md-0 pb-2">
                     <div class="a-box a-spacing-none normal-desktop-address-tile">
                       <div class="a-box-inner a-padding-none">
                         <div class="address-section-no-default">
@@ -60,29 +60,35 @@
                               <li>
                                 <h5>
                                   <!-- Address Fullname -->
-                                  <b>Address fullname</b>
+                                  <b>{{ address.fullName }}</b>
                                 </h5>
                               </li>
                               <!-- Address street address -->
-                              <li>streetAddress</li>
+                              <li>{{ address.streetAddress }}</li>
                               <!-- Address city state zip code -->
-                              <li>city, state zipCode</li>
+                              <li>{{ address.city }}, {{ address.state }}, {{ address.zipCode }}</li>
                               <!-- Address country -->
-                              <li>country</li>
+                              <li>{{ address.country }}</li>
                               <!-- Address Phone number -->
-                              <li>Phone number: phonenumber</li>
+                              <li>Phone number: {{ address.phoneNumber }}</li>
                             </ul>
                           </div>
                         </div>
                       </div>
                       <!-- Delete Button -->
                       <div class="edit-address-desktop-link">
-                        <a href="#">Edit</a>
+                        <nuxt-link :to="`/addresses/${address._id}`">
+                          Edit
+                        </nuxt-link>
                         &nbsp; | &nbsp;
-                        <a href="#">Delete</a>
+                        <a href="#" @click="onDeleteAddress(address._id, index)">
+                          Delete
+                        </a>
                         &nbsp; | &nbsp;
                         <!-- Set Address as Default -->
-                        <a href="#">Set as Default</a>
+                        <a href="#" @click="onSetDefault(address._id)">
+                          Set as Default
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -98,3 +104,48 @@
   </main>
   <!--/MAIN-->
 </template>
+<script>
+export default {
+  async asyncData ({ $axios }) {
+    try {
+      const response = await $axios.$get('api/addresses')
+      return {
+        addresses: response.addresses
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  },
+  data () {
+    return {
+      message: ''
+    }
+  },
+  methods: {
+    async onDeleteAddress (id, index) {
+      const response = await this.$axios.$delete(`/api/addresses/${id}`)
+      try {
+        if (response.success) {
+          this.message = response.message
+          this.addresses.splice(index, 1)
+        }
+      } catch (err) {
+        this.message = response.message
+        console.log(err)
+      }
+    },
+    async onSetDefault (_id) {
+      const response = await this.$axios.$put('/api/addresses/set/default', { id: _id })
+      try {
+        if (response.success) {
+          this.message = response.message
+          await this.$auth.fetchuser()
+        }
+      } catch (err) {
+        this.message = response.message
+        console.log(err)
+      }
+    }
+  }
+}
+</script>

@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="a-section">
-              <h2>Add a new address</h2>
+              <h2>Update an address</h2>
               <div class="a-section a-spacing-none a-spacing-top-small">
                 <b>
                   Or pick up your packages at your convenience from our self-service locations. To add an Amazon Pickup Point or Locker, click
@@ -63,7 +63,7 @@
                   <!-- Full name -->
                   <div class="a-spacing-top-medium">
                     <label style="margin-bottom: 0px;">Full Name</label>
-                    <input v-model="fullName" type="text" class="a-input-text" style="width: 100%;">
+                    <input v-model="fullName" :placeholder="address.fullName" type="text" class="a-input-text" style="width: 100%;">
                   </div>
                   <!-- Street Address -->
                   <div class="a-spacing-top-medium">
@@ -73,7 +73,7 @@
                       type="text"
                       class="a-input-text"
                       style="width: 100%;"
-                      placeholder="Street and number, P.O. box, c/o."
+                      :placeholder="address.streetAddress"
                     >
                     <!-- Street Address 2 -->
                     <input
@@ -87,22 +87,22 @@
                   <!-- City -->
                   <div class="a-spacing-top-medium">
                     <label style="margin-bottom: 0px;">City</label>
-                    <input v-model="city" type="text" class="a-input-text" style="width: 100%;">
+                    <input v-model="city" :placeholder="address.city" type="text" class="a-input-text" style="width: 100%;">
                   </div>
                   <!-- State -->
                   <div class="a-spacing-top-medium">
                     <label style="margin-bottom: 0px;">State / Province / Region</label>
-                    <input v-model="state" type="text" class="a-input-text" style="width: 100%;">
+                    <input v-model="state" :placeholder="address.state" type="text" class="a-input-text" style="width: 100%;">
                   </div>
                   <!-- Zip Code -->
                   <div class="a-spacing-top-medium">
                     <label style="margin-bottom: 0px;">Zip Code</label>
-                    <input v-model="zipCode" type="text" class="a-input-text" style="width: 100%;">
+                    <input v-model="zipCode" :placeholder="address.zipCode" type="text" class="a-input-text" style="width: 100%;">
                   </div>
                   <!-- Phone Number -->
                   <div class="a-spacing-top-medium">
                     <label style="margin-bottom: 0px;">Phone Number</label>
-                    <input v-model="phoneNumber" type="text" class="a-input-text" style="width: 100%;">
+                    <input v-model="phoneNumber" :placeholder="address.phoneNumber" type="text" class="a-input-text" style="width: 100%;">
                     <div class="a-section a-spacing-none a-spacing-top-micro">
                       <span class="a-size-mini">May be used to assist delivery</span>
                     </div>
@@ -117,7 +117,7 @@
                     >Do we need additional instructions to find this address?</label>
                     <textarea
                       v-model="deliveryInstructions"
-                      placeholder="Provide details such as building description, a nearby landmark, or other navigation instructions"
+                      :placeholder="address.deliveryInstructions"
                       style="height:6em; width: 100%;"
                     />
                   </div>
@@ -126,7 +126,7 @@
                     <label
                       style="margin-bottom: 0px;"
                     >Do we need a security code or a call box number to access this building?</label>
-                    <input v-model="securityCode" type="text" class="a-input-text" style="width: 100%;" placeholder="1234">
+                    <input v-model="securityCode" type="text" class="a-input-text" style="width: 100%;" :placeholder="address.securityCode">
                   </div>
                   <div class="a-spacing-top-medium">
                     <label style="margin-bottom: 0px;">Weekend delivery</label>
@@ -156,7 +156,7 @@
                   <div class="a-spacing-top-large">
                     <span class="a-button-register">
                       <span class="a-button-inner">
-                        <span class="a-button-text" @click="onAddAddress">Add address</span>
+                        <span class="a-button-text" @click="onUpdateAddress">Update address</span>
                       </span>
                     </span>
                   </div>
@@ -174,11 +174,16 @@
 </template>
 <script>
 export default {
-  async asyncData ({ $axios }) {
+  async asyncData ({ $axios, params }) {
     try {
-      const response = await $axios.$get('/api/countries')
+      const countries = $axios.$get('/api/countries')
+      const address = $axios.$get(`/api/addresses/${params.id}`)
+      const [countoryResponse, addressResponse] = await Promise.all([
+        countries, address
+      ])
       return {
-        countries: response
+        countries: countoryResponse,
+        address: addressResponse.address
       }
     } catch (err) {
       console.log(err)
@@ -186,7 +191,7 @@ export default {
   },
   data () {
     return {
-      country: 'United State of America',
+      country: '',
       fullName: '',
       streetAddress1: '',
       streetAddress2: '',
@@ -199,12 +204,12 @@ export default {
     }
   },
   methods: {
-    async onAddAddress () {
+    async onUpdateAddress () {
       try {
         const data = {
           country: this.country,
           fullName: this.fullName,
-          streetAddress1: this.streetAddress1 + '' + this.streetAddress2,
+          streetAddress: this.streetAddress1 + '' + this.streetAddress2,
           city: this.city,
           state: this.state,
           phoneNumber: this.phoneNumber,
@@ -213,7 +218,7 @@ export default {
           securityCode: this.securityCode
         }
 
-        const response = await this.$axios.$post('/api/addresses', data)
+        const response = await this.$axios.$put(`/api/addresses/${this.$route.params.id}`, data)
 
         if (response.success) {
           this.$router.push('/addresses')
