@@ -118,7 +118,7 @@ export default {
 
         if (response.success) {
           this.$store.commit('clearCart')
-          this.$router.push('/')
+          this.$router.push('/orders')
         }
       } catch (err) {
         console.log(err)
